@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Dream Interior — Luxury Interior Solutions, Tezpur</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Tenor+Sans&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body class="loading-active">
+
+<div id="loader">
+  <div class="loader-bg-grid"></div>
+  <div class="loader-orb lb1"></div>
+  <div class="loader-orb lb2"></div>
+  <div class="loader-inner">
+    <div class="loader-brand">DREAM <em>Interior</em></div>
+    <div class="loader-sub">Luxury Interior Solutions · Tezpur, Assam</div>
+    <div class="loader-line"></div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar-track">
+        <div class="loader-bar-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-pct" id="loaderPct">0%</div>
+    </div>
+    <div class="loader-tagline">
+      Crafting your space&nbsp;&nbsp;
+      <span class="loader-dots">
+        <span></span><span></span><span></span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curR"></div>
+<div class="stars" id="stars"></div>
+<a href="#hero" id="btt"><i class="fas fa-arrow-up"></i></a>
+
+<nav id="mainNav" class="navbar navbar-expand-lg">
+  <div class="container-fluid px-0">
+    <a class="nav-brand ms-0" href="#hero">
+      DREAM <em>Interior</em>
+    </a>
+    <button class="navbar-toggler border-0 ms-auto me-3" type="button" data-bs-toggle="collapse" data-bs-target="#nm">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nm">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <a href="/staff" class="btn-staff me-0">Staff Access</a>
+    </div>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-orb o3"></div>
+  <div class="particles" id="parts"></div>
+  <div class="beam" style="left:20%;height:70%;top:10%;animation-delay:0s"></div>
+  <div class="beam" style="left:60%;height:50%;top:25%;animation-delay:3s"></div>
+  <div class="beam" style="left:80%;height:60%;top:15%;animation-delay:5.5s"></div>
+  <div class="container-fluid px-4 px-lg-5 w-100">
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-xl-8 hero-content">
+        <div class="hero-eyebrow">Luxury Interior Solutions — Tezpur, Assam</div>
+        <h1 class="hero-title">
+          <span class="hl">DREAM</span>
+          <span class="sub">Interior</span>
+        </h1>
+        <p class="hero-desc">Where vision meets craftsmanship. We create living spaces that speak the language of your dreams — each detail curated, each corner perfected.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary-glow">Enquire Now <i class="fas fa-arrow-right"></i></a>
+          <a href="#products" class="btn-ghost-glow">Explore Products <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="scroll-hint">
+          <div class="scroll-arrow"></div>
+          <span>Scroll</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Wall Panels</span><span class="dot">◆</span>
+    <span>Bed Design</span><span class="dot">◆</span>
+    <span>Modular Kitchen</span><span class="dot">◆</span>
+    <span>False Ceiling</span><span class="dot">◆</span>
+    <span>Lighting Design</span><span class="dot">◆</span>
+    <span>Custom Wardrobes</span><span class="dot">◆</span>
+    <span>3D Visualization</span><span class="dot">◆</span>
+    <span>Complete Interiors</span><span class="dot">◆</span>
+    <span>Wall Panels</span><span class="dot">◆</span>
+    <span>Bed Design</span><span class="dot">◆</span>
+    <span>Modular Kitchen</span><span class="dot">◆</span>
+    <span>False Ceiling</span><span class="dot">◆</span>
+    <span>Lighting Design</span><span class="dot">◆</span>
+    <span>Custom Wardrobes</span><span class="dot">◆</span>
+    <span>3D Visualization</span><span class="dot">◆</span>
+    <span>Complete Interiors</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 rl">
+        <div class="about-img-wrap">
+          <div class="about-frame"></div>
+          <a href="#about">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80" alt="Dream Interior Showroom"/>
+          </a>
+          <div class="about-badge">
+            <div class="big">10+</div>
+            <div class="sm">Years of<br>Excellence</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 ps-lg-5 rr">
+        <div class="section-lbl">Our Story</div>
+        <h2 class="section-title">Crafting <em>Spaces</em>,<br>Creating Stories</h2>
+        <div class="gold-div"></div>
+        <p class="about-p">Dream Interior was born from a passion for transforming ordinary spaces into extraordinary living experiences. Based in Tezpur, Assam, we blend contemporary design with traditional craftsmanship to deliver interiors that are both beautiful and functional.</p>
+        <p class="about-p">From concept to completion, every project is handled with meticulous attention to detail — ensuring your space reflects your personality and exceeds your expectations.</p>
+        <div class="quote-blk">
+          <p>Every space has a soul. Our mission is to discover it, nurture it, and present it in its most beautiful form — crafted with love and precision.</p>
+          <cite>Hiranya Ranjan Borah<span>Founder & Principal Designer — Dream Interior, Tezpur</span></cite>
+        </div>
+      </div>
+    </div>
+    <div class="stats-row reveal">
+      <div class="stat-item">
+        <div class="stat-num" data-target="500">0</div>
+        <div class="stat-lbl">Projects Done</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="98" data-suffix="%">0</div>
+        <div class="stat-lbl">Happy Clients</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="50">0</div>
+        <div class="stat-lbl">Products</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5 ★</div>
+        <div class="stat-lbl">Rated Service</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-6 reveal">
+        <div class="section-lbl">What We Offer</div>
+        <h2 class="section-title">Our <em>Products</em></h2>
+        <div class="gold-div"></div>
+      </div>
+    </div>
+
+    <div class="prod-tab-nav reveal">
+      <button class="prod-tab-btn active" data-tab="kitchen"><i class="fas fa-utensils"></i>Kitchen</button>
+      <button class="prod-tab-btn" data-tab="bedroom"><i class="fas fa-bed"></i>Bedroom</button>
+      <button class="prod-tab-btn" data-tab="furniture"><i class="fas fa-couch"></i>Furniture</button>
+      <button class="prod-tab-btn" data-tab="office"><i class="fas fa-briefcase"></i>Office Interior</button>
+      <button class="prod-tab-btn" data-tab="walls"><i class="fas fa-paint-roller"></i>Walls & Ceiling</button>
+      <button class="prod-tab-btn" data-tab="lighting"><i class="fas fa-lightbulb"></i>Lighting</button>
+    </div>
+
+    <div class="prod-tab-pane active" id="tab-kitchen">
+      <div class="row g-4">
+        {% for product in kitchen_products %}
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="prod-card">
+            <div style="overflow:hidden">
+              <img class="prod-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            <div class="prod-body">
+              <div class="prod-tag">{{ product.category }}</div>
+              <div class="prod-name">{{ product.name }}</div>
+              <p class="prod-desc">{{ product.description }}</p>
+              <div class="prod-price">{{ product.price }}</div>
+              <a href="#contact" class="btn-enquiry">Enquire Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-4"><h5>No Kitchen Products Added Yet</h5></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="prod-tab-pane" id="tab-bedroom" style="display: none;">
+      <div class="row g-4">
+        {% for product in bedroom_products %}
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="prod-card">
+            <div style="overflow:hidden">
+              <img class="prod-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            <div class="prod-body">
+              <div class="prod-tag">{{ product.category }}</div>
+              <div class="prod-name">{{ product.name }}</div>
+              <p class="prod-desc">{{ product.description }}</p>
+              <div class="prod-price">{{ product.price }}</div>
+              <a href="#contact" class="btn-enquiry">Enquire Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-4"><h5>No Bedroom Products Added Yet</h5></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="prod-tab-pane" id="tab-furniture" style="display: none;">
+      <div class="row g-4">
+        {% for product in furniture_products %}
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="prod-card">
+            <div style="overflow:hidden">
+              <img class="prod-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            <div class="prod-body">
+              <div class="prod-tag">{{ product.category }}</div>
+              <div class="prod-name">{{ product.name }}</div>
+              <p class="prod-desc">{{ product.description }}</p>
+              <div class="prod-price">{{ product.price }}</div>
+              <a href="#contact" class="btn-enquiry">Enquire Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-4"><h5>No Furniture Products Added Yet</h5></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="prod-tab-pane" id="tab-office" style="display: none;">
+      <div class="row g-4">
+        {% for product in office_products %}
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="prod-card">
+            <div style="overflow:hidden">
+              <img class="prod-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            <div class="prod-body">
+              <div class="prod-tag">{{ product.category }}</div>
+              <div class="prod-name">{{ product.name }}</div>
+              <p class="prod-desc">{{ product.description }}</p>
+              <div class="prod-price">{{ product.price }}</div>
+              <a href="#contact" class="btn-enquiry">Enquire Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-4"><h5>No Office Interior Products Added Yet</h5></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="prod-tab-pane" id="tab-walls" style="display: none;">
+      <div class="row g-4">
+        {% for product in wall_products %}
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="prod-card">
+            <div style="overflow:hidden">
+              <img class="prod-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            <div class="prod-body">
+              <div class="prod-tag">{{ product.category }}</div>
+              <div class="prod-name">{{ product.name }}</div>
+              <p class="prod-desc">{{ product.description }}</p>
+              <div class="prod-price">{{ product.price }}</div>
+              <a href="#contact" class="btn-enquiry">Enquire Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-4"><h5>No Walls & Ceiling Products Added Yet</h5></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="prod-tab-pane" id="tab-lighting" style="display: none;">
+      <div class="row g-4">
+        {% for product in lighting_products %}
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="prod-card">
+            <div style="overflow:hidden">
+              <img class="prod-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            <div class="prod-body">
+              <div class="prod-tag">{{ product.category }}</div>
+              <div class="prod-name">{{ product.name }}</div>
+              <p class="prod-desc">{{ product.description }}</p>
+              <div class="prod-price">{{ product.price }}</div>
+              <a href="#contact" class="btn-enquiry">Enquire Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-4"><h5>No Lighting Products Added Yet</h5></div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="row mb-5">
+      <div class="col-lg-6 reveal">
+        <div class="section-lbl">Our Portfolio</div>
+        <h2 class="section-title">Project <em>Gallery</em></h2>
+        <div class="gold-div"></div>
+      </div>
+    </div>
+    <div class="gal-grid reveal">
+      {% for item in gallery_items %}
+      <div class="gal-item {{ item.grid_class }}">
+        <img src="{{ item.image.url }}" alt="{{ item.title }}"/>
+        <div class="gal-border"></div>
+        <div class="gal-ov">
+          <div class="gal-name">{{ item.title }}</div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="w-100 text-center py-5">
+        <h5 style="color: var(--text2);">No Gallery Showcase Images Configured Yet</h5>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-6 reveal">
+        <div class="section-lbl">What We Do</div>
+        <h2 class="section-title">Our <em>Services</em></h2>
+        <div class="gold-div"></div>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="svc-card">
+          <div class="svc-num">01</div>
+          <div class="svc-icon"><i class="fas fa-home"></i></div>
+          <div class="svc-title">Complete Interiors</div>
+          <p class="svc-desc">End-to-end interior design and execution for homes, apartments, villas, and commercial spaces — fully managed by our expert team.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="svc-card">
+          <div class="svc-num">02</div>
+          <div class="svc-icon"><i class="fas fa-cube"></i></div>
+          <div class="svc-title">3D Visualization</div>
+          <p class="svc-desc">Photorealistic 3D renders of your space before execution begins — so you can see and approve every detail in advance.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="svc-card">
+          <div class="svc-num">03</div>
+          <div class="svc-icon"><i class="fas fa-couch"></i></div>
+          <div class="svc-title">Custom Furniture</div>
+          <p class="svc-desc">Bespoke furniture crafted to your exact specifications — wardrobes, beds, sofas, dining sets, and more, made with premium materials.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="svc-card">
+          <div class="svc-num">04</div>
+          <div class="svc-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="svc-title">Lighting Design</div>
+          <p class="svc-desc">Curated lighting plans combining ambient, accent, and task lighting to create atmosphere and highlight architectural features.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="svc-card">
+          <div class="svc-num">05</div>
+          <div class="svc-icon"><i class="fas fa-drafting-compass"></i></div>
+          <div class="svc-title">Space Planning</div>
+          <p class="svc-desc">Strategic layout optimization ensuring every square foot is functional, beautiful, and perfectly utilized for your lifestyle.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="svc-card">
+          <div class="svc-num">06</div>
+          <div class="svc-icon"><i class="fas fa-tools"></i></div>
+          <div class="svc-title">Renovation & Makeover</div>
+          <p class="svc-desc">Full home renovation services — flooring, wall treatments, and complete structural makeovers with minimal disruption.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="row mb-5 justify-content-center text-center">
+      <div class="col-lg-7 reveal">
+        <div class="section-lbl">How We Work</div>
+        <h2 class="section-title">Our Design <em>Process</em></h2>
+        <div class="gold-div c"></div>
+        <p style="color:var(--text-muted);font-size:.88rem">A transparent, seamless journey from your first idea to the final reveal.</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="proc-card">
+          <div class="proc-circle">01</div>
+          <div class="proc-title">Consultation</div>
+          <p class="proc-desc">We begin with a detailed discussion of your vision, requirements, lifestyle, and budget to understand exactly what you need.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="proc-card">
+          <div class="proc-circle">02</div>
+          <div class="proc-title">Design & 3D</div>
+          <p class="proc-desc">Our designers create detailed layouts and photorealistic 3D visualizations for your approval before any work begins.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="proc-card">
+          <div class="proc-circle">03</div>
+          <div class="proc-title">Execution</div>
+          <p class="proc-desc">Our skilled craftsmen execute the design with precision using premium materials, supervised at every stage for quality.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="proc-card">
+          <div class="proc-circle">04</div>
+          <div class="proc-title">Handover</div>
+          <p class="proc-desc">Your dream space is delivered on time, snag-free, with a walkthrough and complete after-installation support.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 reveal">
+        <div class="section-lbl">Get In Touch</div>
+        <h2 class="section-title">Let's <em>Build Something</em> Beautiful</h2>
+        <div class="gold-div"></div>
+      </div>
+    </div>
+    <div class="row g-5">
+      <div class="col-lg-5 rl">
+        <div class="ct-item">
+          <!-- <div class="ct-icon"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <div class="ct-lbl">Phone / WhatsApp</div>
+            <div class="ct-val"><a href="tel:+919876543210">+91 98765 43210</a></div>
+          </div> -->
+        </div>
+        <div class="ct-item">
+          <div class="ct-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="ct-lbl">Email</div>
+            <div class="ct-val"><a href="#">dreaminterior@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="ct-lbl">Location</div>
+            <div class="ct-val">Tezpur, Assam — India</div>
+          </div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-icon"><i class="fab fa-instagram"></i></div>
+          <div>
+            <div class="ct-lbl">Follow Us on Instagram</div>
+            <div class="ct-val"><a href="https://www.instagram.com/dream.interior2024?igsh=MWtmcW1vcHN3ODdkaA==" target="_blank" style="color:var(--accent)">dream.interior2024</a></div>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2730.630739460217!2d92.76380549999999!3d26.631248199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3744ebf657cee76b%3A0xbf77232e0a2114f2!2sDream%20Interior!5e1!3m2!1sen!2sin!4v1780587503755!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="col-lg-7 rr">
+        <div class="form-wrap">
+          <div class="section-lbl mb-4">Send an Enquiry</div>
+          {% if messages %}
+              {% for message in messages %}
+                  <div class="alert alert-success alert-dismissible fade show mb-3">
+                      {{ message }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                  </div>
+              {% endfor %}
+          {% endif %}
+          <form method="POST" action="{% url 'index' %}">
+              {% csrf_token %}
+              <div class="row g-3">
+                  <div class="col-md-6">
+                      <label class="form-label">Full Name</label>
+                      <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="form-label">Phone Number</label>
+                      <input type="tel" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+                  </div>
+                  <div class="col-12">
+                      <label class="form-label">Email Address</label>
+                      <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="form-label">Project Type</label>
+                      <select name="project_type" class="form-select" required>
+                          <option value="" disabled selected>Select project type</option>
+                          <optgroup label="Residential">
+                              <option value="Full Home Interior">Full Home Interior</option>
+                              <option value="Single Room Makeover">Single Room Makeover</option>
+                              <option value="Bedroom Design">Bedroom Design</option>
+                              <option value="Living Room Design">Living Room Design</option>
+                              <option value="Modular Kitchen">Modular Kitchen</option>
+                              <option value="Bathroom Redesign">Bathroom Redesign</option>
+                              <option value="All Appliances Package">All Appliances Package</option>
+                          </optgroup>
+                          <optgroup label="Commercial">
+                              <option value="Office Interior">Office Interior</option>
+                              <option value="Retail / Showroom">Retail / Showroom</option>
+                              <option value="Restaurant / Café">Restaurant / Café</option>
+                              <option value="Villa / Bungalow">Villa / Bungalow</option>
+                          </optgroup>
+                          <option value="Renovation / Makeover">Renovation / Makeover</option>
+                          <option value="3D Visualization Only">3D Visualization Only</option>
+                          <option value="Other / Consultation">Other / Consultation</option>
+                      </select>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="form-label">Budget Range</label>
+                      <select name="budget" class="form-select" required>
+                          <option value="" disabled selected>Select your budget</option>
+                          <option value="Below ₹2 Lakhs">Below ₹2 Lakhs</option>
+                          <option value="₹2 – ₹5 Lakhs">₹2 – ₹5 Lakhs</option>
+                          <option value="₹5 – ₹10 Lakhs">₹5 – ₹10 Lakhs</option>
+                          <option value="₹10 – ₹20 Lakhs">₹10 – ₹20 Lakhs</option>
+                          <option value="₹20 – ₹50 Lakhs">₹20 – ₹50 Lakhs</option>
+                          <option value="Above ₹50 Lakhs">Above ₹50 Lakhs</option>
+                          <option value="Let's Discuss">Let's Discuss</option>
+                      </select>
+                  </div>
+                  <div class="col-12">
+                      <label class="form-label">Your Message</label>
+                      <textarea name="message" class="form-control" rows="4" placeholder="Describe your project, requirements, timeline..." required></textarea>
+                  </div>
+                  <div class="col-12 mt-2">
+                      <button type="submit" class="btn-primary-glow w-100 justify-content-center d-flex border-0">
+                          Send Enquiry <i class="fas fa-paper-plane ms-2"></i>
+                      </button>
+                  </div>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="ft-brand">DREAM Interior</div>
+        <div class="ft-sub">Luxury Interior Solutions — Tezpur, Assam</div>
+        <p style="color:var(--text-muted);font-size:.8rem;margin-top:16px;line-height:1.85">Crafting extraordinary spaces with a passion for design, detail, and lasting elegance since 2014.</p>
+        <div class="mt-3">
+          <a href="https://www.instagram.com/dream.interior" class="soc-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="soc-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="soc-icon"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="soc-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="section-lbl mb-3">Navigation</div>
+        <div class="ft-links">
+          <a href="#about">About</a>
+          <a href="#products">Products</a>
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <div class="section-lbl mb-3">Services</div>
+        <div class="ft-links">
+          <a href="#services">Complete Interiors</a>
+          <a href="#services">3D Visualization</a>
+          <a href="#services">Custom Furniture</a>
+          <a href="#services">Lighting Design</a>
+          <a href="#services">Space Planning</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="section-lbl mb-3">Contact</div>
+        <p style="color:var(--text-muted);font-size:.82rem;line-height:2.2">
+          <i class="fab fa-whatsapp me-2" style="color:var(--accent)"></i>+91 98765 43210<br>
+          <i class="fas fa-envelope me-2" style="color:var(--accent)"></i>dreaminterior@gmail.com<br>
+          <i class="fas fa-map-marker-alt me-2" style="color:var(--accent)"></i>Tezpur, Assam — India<br>
+          <i class="fab fa-instagram me-2" style="color:var(--accent)"></i>dream.interior2024
+        </p>
+      </div>
+    </div>
+    <div class="ft-copy d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>&copy; 2024 Dream Interior, Tezpur. All rights reserved.</span>
+      <span style="font-size:.63rem;letter-spacing:1px">Designed with ◆ in Assam</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function(){
+
+  /* LOADING SCREEN */
+  const pctEl = document.getElementById('loaderPct');
+  let pct = 0;
+  const pctTimer = setInterval(()=>{
+    const remaining = 100 - pct;
+    const inc = Math.max(1, Math.floor(remaining * 0.06));
+    pct = Math.min(pct + inc, 100);
+    if(pctEl) pctEl.textContent = pct + '%';
+    if(pct >= 100){
+      clearInterval(pctTimer);
+      setTimeout(()=>{
+        const loader = document.getElementById('loader');
+        loader.classList.add('hide');
+        document.body.classList.remove('loading-active');
+        initStars();
+        initParticles();
+      }, 400);
+    }
+  }, 28);
+
+  /* STARS */
+  function initStars(){
+    const sc = document.getElementById('stars');
+    if(!sc) return;
+    for(let i=0;i<120;i++){
+      const s=document.createElement('div');
+      s.className='star';
+      const sz=Math.random()*2+.5;
+      s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
+      sc.appendChild(s);
+    }
+  }
+
+  /* PARTICLES */
+  function initParticles(){
+    const pc=document.getElementById('parts');
+    if(!pc) return;
+    for(let i=0;i<28;i++){
+      const p=document.createElement('div');p.className='particle';
+      p.style.left=Math.random()*100+'%';
+      p.style.animationDuration=(9+Math.random()*14)+'s';
+      p.style.animationDelay=(Math.random()*12)+'s';
+      p.style.width=p.style.height=(1+Math.random()*2)+'px';
+      pc.appendChild(p);
+    }
+  }
+
+  /* CURSOR */
+  const cur=document.getElementById('cur'), ring=document.getElementById('curR');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+  (function ani(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ani)})();
+  document.querySelectorAll('a,button,.prod-card,.svc-card,.gal-item,.proc-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ring.style.width='56px';ring.style.height='56px';ring.style.opacity='1';cur.style.opacity='0'});
+    el.addEventListener('mouseleave',()=>{ring.style.width='34px';ring.style.height='34px';ring.style.opacity='.55';cur.style.opacity='1'});
+  });
+
+  /* NAVBAR */
+  $(window).on('scroll',function(){
+    $('#mainNav').toggleClass('scrolled',$(this).scrollTop()>60);
+    $('#btt').toggleClass('on',$(this).scrollTop()>400);
+  });
+
+  /* SCROLL REVEAL */
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal,.rl,.rr').forEach(el=>obs.observe(el));
+
+  /* COUNTERS */
+  const cobs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target,target=+el.dataset.target,suf=el.dataset.suffix||'+';
+      let n=0;const step=Math.ceil(target/120);
+      const t=setInterval(()=>{n=Math.min(n+step,target);el.textContent=n+suf;if(n>=target)clearInterval(t)},16);
+      cobs.unobserve(el);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('[data-target]').forEach(el=>cobs.observe(el));
+
+  /* 3D TILT */
+  document.querySelectorAll('.prod-card,.svc-card,.proc-card').forEach(c=>{
+    c.addEventListener('mousemove',e=>{
+      const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      c.style.transform=`perspective(800px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-6px)`;
+    });
+    c.addEventListener('mouseleave',()=>c.style.transform='');
+  });
+
+  /* PRODUCT TABS SWITCHER */
+  $('.prod-tab-btn').on('click', function(){
+    const tab = $(this).data('tab');
+
+    $('.prod-tab-btn').removeClass('active');
+    $(this).addClass('active');
+
+    $('.prod-tab-pane.active').fadeOut(200, function(){
+      $(this).removeClass('active');
+      $('#tab-' + tab).addClass('active').hide().fadeIn(300);
+
+      $('#tab-' + tab + ' .reveal').each(function(i){
+        const el = this;
+        el.classList.remove('on');
+        setTimeout(function(){
+          el.classList.add('on');
+        }, i * 80);
+      });
+    });
+  });
+
+  /* CLOSE MOBILE MENU */
+  $('.navbar-nav .nav-link').on('click',()=>{
+    const c=document.getElementById('nm');
+    if(c.classList.contains('show'))bootstrap.Collapse.getOrCreateInstance(c).hide();
+  });
+
+});
+</script>
+</body>
+</html>

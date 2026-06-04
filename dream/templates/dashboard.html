@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dream Interior | Admin Dashboard</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'dashboard.css' %}">
+</head>
+<body>
+
+<div class="mesh"></div>
+<div class="noise"></div>
+<div class="grid-bg"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<canvas id="bg-canvas"></canvas>
+
+<aside class="sidebar">
+  <div class="sidebar-top">
+    <div class="brand-gem">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 10.5L12 3l9 7.5V21H3V10.5z" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 21v-7h6v7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="brand-name">DREAM <span>Interior</span></div>
+    <div class="brand-tagline">Tezpur · Assam</div>
+  </div>
+
+  <nav class="nav-section">
+    <div class="nav-group-label">Management</div>
+
+    <a class="nav-item active" href="#" onclick="showTab('enquiries'); setActive(this); return false;">
+      <div class="nav-icon"><i class="fas fa-envelope-open-text"></i></div>
+      <span>Enquiries</span>
+      {% if pending_leads > 0 %}<div class="nav-ping"></div>{% endif %}
+    </a>
+    <a class="nav-item" href="#" onclick="showTab('products'); setActive(this); return false;">
+      <div class="nav-icon"><i class="fas fa-layer-group"></i></div>
+      <span>Products</span>
+    </a>
+    <a class="nav-item" href="#" onclick="showTab('gallery'); setActive(this); return false;">
+      <div class="nav-icon"><i class="fas fa-images"></i></div>
+      <span>Gallery</span>
+    </a>
+
+    <div class="nav-group-label" style="margin-top:18px">System</div>
+    <a class="nav-item danger" href="/logout/">
+      <div class="nav-icon"><i class="fas fa-sign-out-alt"></i></div>
+      <span>Logout</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="admin-row">
+      <div class="admin-ava">A</div>
+      <div>
+        <div class="admin-name">Admin</div>
+        <div class="admin-role">Staff Access</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <div class="topbar">
+    <div>
+      <div class="eyebrow">System Overview</div>
+      <h1 class="page-title" id="page-title">Lead <em>Management</em></h1>
+    </div>
+    <div class="topbar-right">
+      <button id="add-prod-btn" class="btn-primary-gold" style="display:none" data-bs-toggle="modal" data-bs-target="#productModal">
+        <i class="fas fa-plus"></i> Add Product
+      </button>
+      <button id="add-gall-btn" class="btn-primary-gold" style="display:none" data-bs-toggle="modal" data-bs-target="#galleryModal">
+        <i class="fas fa-plus"></i> New Project
+      </button>
+      <button class="btn-outline"><i class="fas fa-bell"></i></button>
+    </div>
+  </div>
+
+  {% if messages %}
+    <div class="px-1 mb-3">
+      {% for message in messages %}
+        <div class="alert alert-dark alert-dismissible fade show border-0 text-white" style="background:var(--surface2);border-left:3px solid var(--gold)!important" role="alert">
+          <i class="fas fa-info-circle me-2 text-warning"></i> {{ message }}
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-icon-wrap si-gold"><i class="fas fa-inbox"></i></div>
+      <div class="stat-num">{{ total_enquiries }}</div>
+      <div class="stat-lbl">Total Enquiries</div>
+      <div class="stat-pill pill-up">Live</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon-wrap si-violet"><i class="fas fa-hourglass-half"></i></div>
+      <div class="stat-num">{{ pending_leads }}</div>
+      <div class="stat-lbl">Pending Leads</div>
+      <div class="stat-pill pill-warn">Active</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon-wrap si-sky"><i class="fas fa-layer-group"></i></div>
+      <div class="stat-num">{{ total_products }}</div>
+      <div class="stat-lbl">Products Listed</div>
+      <div class="stat-pill pill-up">Catalogue</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon-wrap si-rose"><i class="fas fa-images"></i></div>
+      <div class="stat-num">{{ gallery_items.count|default:"0" }}</div>
+      <div class="stat-lbl">Gallery Projects</div>
+      <div class="stat-pill pill-up">Portfolio</div>
+    </div>
+  </div>
+
+  <div class="tab-panel active" id="tab-enquiries">
+    <div class="glass-wrap">
+      <div class="tbl-topbar">
+        <div>
+          <div class="tbl-title">Contact Enquiries</div>
+          <div class="tbl-sub">All incoming client leads</div>
+        </div>
+        <div class="search-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" id="enq-search" placeholder="Search by name, service…" oninput="filterTable('enq-search','enq-body')">
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="dt">
+          <thead><tr>
+            <th>Client</th>
+            <th>Requirement</th>
+            <th>Location</th>
+            <th>Budget</th>
+            <th>Status</th>
+            <th style="text-align:right">Actions</th>
+          </tr></thead>
+          <tbody id="enq-body">
+            {% for enq in enquiries %}
+            <tr>
+              <td>
+                <div class="c-name">{{ enq.name }}</div>
+                <div class="c-phone"><i class="fas fa-phone-alt"></i>{{ enq.phone }}</div>
+              </td>
+              <td>
+                <span class="badge-service">{{ enq.project_type }}</span>
+                <div style="font-size:11px;color:var(--text3);margin-top:6px;font-family:'Syne',sans-serif;letter-spacing:1px">{{ enq.created_at|date:"d M Y"|upper }}</div>
+              </td>
+              <td><span class="chip-loc"><i class="fas fa-map-marker-alt"></i> {{ enq.location }}</span></td>
+              <td><span class="budget">₹{{ enq.budget }}</span></td>
+              <td>
+                <form method="POST" action="{% url 'update_enquiry' enq.id %}">
+                  {% csrf_token %}
+                  <select name="status" class="status-sel" onchange="this.form.submit()">
+                    <option value="pending" {% if enq.status == 'pending' %}selected{% endif %}>⏳ Pending</option>
+                    <option value="done" {% if enq.status == 'done' %}selected{% endif %}>✅ Completed</option>
+                  </select>
+                </form>
+              </td>
+              <td style="text-align:right">
+                <a href="{% url 'delete_enquiry' enq.id %}" class="btn-del" onclick="return confirm('Delete this record?')"><i class="fas fa-trash-alt"></i></a>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--text3); padding: 30px;">No incoming contact enquiries found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-products">
+    <div class="glass-wrap">
+      <div class="tbl-topbar">
+        <div>
+          <div class="tbl-title">Product Catalogue</div>
+          <div class="tbl-sub">All listed interior products</div>
+        </div>
+        <div class="search-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" id="prod-search" placeholder="Search products…" oninput="filterTable('prod-search','prod-body')">
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="dt">
+          <thead><tr>
+            <th>Preview</th><th>Product Name</th><th>Category</th><th>Starting Price</th>
+            <th style="text-align:right">Actions</th>
+          </tr></thead>
+          <tbody id="prod-body">
+            {% for prod in products %}
+            <tr>
+              <td>
+                <button class="btn-preview" data-bs-toggle="modal" data-bs-target="#pPrev{{ prod.id }}">
+                  <i class="fas fa-image"></i> View Image
+                </button>
+                <div class="modal fade" id="pPrev{{ prod.id }}" tabindex="-1">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header"><h5 class="modal-title">{{ prod.name }}</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                      <div class="modal-body p-0">
+                        <div class="carousel slide"><div class="carousel-inner">
+                          <div class="carousel-item active">
+                            {% if prod.image %}
+                              <img src="{{ prod.image.url }}" class="d-block w-100" alt="{{ prod.name }}">
+                            {% endif %}
+                          </div>
+                        </div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><div class="c-name">{{ prod.name }}</div></td>
+              <td><span class="badge-service">{{ prod.category }}</span></td>
+              <td><span class="budget">₹{{ prod.price }}</span></td>
+              <td style="text-align:right">
+                <form method="POST" action="{% url 'delete_product' prod.id %}" style="display:inline">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-del" onclick="return confirm('Remove product?')"><i class="fas fa-trash-alt"></i></button>
+                </form>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text3); padding: 30px;">No product listings available. Use the "Add Product" button to upload.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-gallery">
+    <div class="glass-wrap">
+      <div class="tbl-topbar">
+        <div>
+          <div class="tbl-title">Portfolio Gallery</div>
+          <div class="tbl-sub">Completed interior projects</div>
+        </div>
+        <div class="search-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" id="gal-search" placeholder="Search gallery items…" oninput="filterTable('gal-search','gal-body')">
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="dt">
+          <thead><tr>
+            <th>Preview</th><th>Project Title</th><th>Grid Position Layout</th><th>Sorting Order</th>
+            <th style="text-align:right">Actions</th>
+          </tr></thead>
+          <tbody id="gal-body">
+            {% for item in gallery_items %}
+            <tr>
+              <td>
+                <button class="btn-preview" data-bs-toggle="modal" data-bs-target="#gPrev{{ item.id }}">
+                  <i class="fas fa-image"></i> View Asset
+                </button>
+                <div class="modal fade" id="gPrev{{ item.id }}" tabindex="-1">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header"><h5 class="modal-title">{{ item.title }}</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                      <div class="modal-body p-0">
+                        {% if item.image %}
+                          <img src="{{ item.image.url }}" class="d-block w-100" alt="{{ item.title }}">
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><div class="c-name">{{ item.title }}</div></td>
+              <td><span class="badge-service" style="text-transform: uppercase;">{{ item.grid_class }}</span></td>
+              <td><span class="budget" style="letter-spacing: 0px;">{{ item.order }}</span></td>
+              <td style="text-align:right">
+                <form method="POST" action="{% url 'delete_gallery_item' item.id %}" style="display:inline">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-del" onclick="return confirm('Remove this project photo from live gallery portfolio?')"><i class="fas fa-trash-alt"></i></button>
+                </form>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text3); padding: 30px;">No portfolio gallery assets found. Use the "New Project" button to populate data.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="{% url 'add_product' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Product</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" style="display:flex;flex-direction:column;gap:18px">
+          <div><label class="form-label">Product Name</label><input type="text" name="name" class="form-control" placeholder="e.g. Modular Kitchen" required></div>
+          <div>
+            <label class="form-label">Category</label>
+            <select name="category" class="form-control form-select" required>
+              <option value="">Select Category</option>
+              <option value="Kitchen">Kitchen</option>
+              <option value="Bedroom">Bedroom</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Office Interior">Office Interior</option>
+              <option value="Walls & Ceiling">Walls & Ceiling</option>
+              <option value="Lighting">Lighting</option>
+            </select>
+          </div>
+          <div><label class="form-label">Starting Price (₹)</label><input type="text" name="price" class="form-control" placeholder="e.g. 45000" required></div>
+          <div><label class="form-label">Description</label><textarea name="description" class="form-control" rows="3" placeholder="Brief product description"></textarea></div>
+          <div><label class="form-label">Product Image</label><input type="file" name="image" class="form-control" accept="image/*" required></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-gold w-100" style="justify-content:center">
+            <i class="fas fa-upload"></i> Upload Product
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="galleryModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="{% url 'add_gallery_item' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title">New Gallery Project</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" style="display:flex;flex-direction:column;gap:18px">
+          <div><label class="form-label">Project Title</label><input type="text" name="title" class="form-control" placeholder="e.g. Grand Living Room" required></div>
+          
+          <div>
+            <label class="form-label">Mosaic Grid Layout Position</label>
+            <select name="grid_class" class="form-control form-select" required>
+              <option value="g1" selected>Large Highlight (g1)</option>
+              <option value="g2">Medium Vertical (g2)</option>
+              <option value="g3">Small Square Top (g3)</option>
+              <option value="g4">Medium Horizontal (g4)</option>
+              <option value="g5">Small Square Bottom (g5)</option>
+              <option value="g6">Wide Base Row (g6)</option>
+            </select>
+          </div>
+
+          <div><label class="form-label">Sorting Arrangement Priority (Order ID)</label><input type="number" name="order" value="0" class="form-control" placeholder="e.g. 0" required></div>
+          <div><label class="form-label">Project Image Asset</label><input type="file" name="image" class="form-control" accept="image/*" required></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary-gold w-100" style="justify-content:center">
+            <i class="fas fa-cloud-upload-alt"></i> Upload Project
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  /* ── Tab switching ── */
+  function showTab(name) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    document.getElementById('add-prod-btn').style.display = name === 'products' ? 'inline-flex' : 'none';
+    document.getElementById('add-gall-btn').style.display = name === 'gallery'  ? 'inline-flex' : 'none';
+    const map = {
+      enquiries: 'Lead <em>Management</em>',
+      products:  'Product <em>Catalogue</em>',
+      gallery:   'Portfolio <em>Gallery</em>'
+    };
+    document.getElementById('page-title').innerHTML = map[name];
+  }
+  function setActive(el) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  /* ── Search filter ── */
+  function filterTable(inId, tbId) {
+    const q = document.getElementById(inId).value.toLowerCase();
+    document.querySelectorAll('#' + tbId + ' tr').forEach(r => {
+      r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  }
+
+  /* ── Particle network canvas ── */
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, pts = [];
+
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  window.addEventListener('resize', resize);
+  resize();
+
+  class Pt {
+    constructor() { this.re(); }
+    re() {
+      this.x  = Math.random() * W;
+      this.y  = Math.random() * H;
+      this.r  = Math.random() * 1.5 + 0.4;
+      this.vx = (Math.random() - 0.5) * 0.25;
+      this.vy = (Math.random() - 0.5) * 0.25;
+      this.a  = Math.random() * 0.4 + 0.07;
+    }
+    move() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.re();
+    }
+    draw() {
+      const isGold = this.r > 1.2;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+      ctx.fillStyle = isGold
+        ? `rgba(232,184,109,${this.a})`
+        : `rgba(155,127,234,${this.a * 0.7})`;
+      ctx.fill();
+    }
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 100) {
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          const a = 0.035 * (1 - d/100);
+          ctx.strokeStyle = `rgba(232,184,109,${a})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+      pts[i].move();
+      pts[i].draw();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  for (let i = 0; i < 100; i++) pts.push(new Pt());
+  frame();
+</script>
+</body>
+</html>
